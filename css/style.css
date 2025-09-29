@@ -544,11 +544,7 @@ body::before {
 
 /* Estilo para el recuadro de información de contacto */
 .contact-card {
-    background-image: linear-gradient(
-        to bottom right,
-        rgba(240, 240, 240, 0.8),
-        rgba(255, 255, 255, 0.6)
-    );
+    background-color: var(--light);
     border-radius: 15px;
     padding: 2.5rem;
     height: 100%; 
