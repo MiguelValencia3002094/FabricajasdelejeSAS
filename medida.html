@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabriCajas del Eje S.A.S.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/Logo FabriCajas del Eje S.A.S.jpg" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="page-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+            <div class="container-fluid">
+                <span href="#" class="navbar-brand">
+                    <img src="img/Logo Fabricajas del Eje S.A.S.jpg" alt="Logo de la empresa" class="logo img-fluid">
+                </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">INICIO</a>
+                        </li>
+                        <li class="nav-item">   
+                            <a href="nosotros.html" class="nav-link">NOSOTROS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="productos.html" class="nav-link">PRODUCTOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://maps.app.goo.gl/Y47iPKk3RoyLKDog7" target="_blank" class="nav-link">UBICACION</a>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/573104420576?" class="btn-phone d-none d-lg-flex ms-lg-3" target="_blank">
+                        <img src="img/whatsapp_blanca.png" alt="WhatsApp" class="whatsapp-icon me-2">
+                        <span class="phone-number">310 4420576</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="medida-header container-fluid d-flex flex-column align-items-center justify-content-center">
+        <h1 class="page-title text-uppercase mb-3">Cajas a Medida</h1>
+        <div class="d-inline-flex page-breadcrumb">
+            <h6 class="text-uppercase m-0"><a href="productos.html">Productos</a></h6>
+            <h6 class="m-0 px-3">/</h6>
+            <h6 class="text-uppercase m-0">Cajas a Medida</h6>
+        </div>
+    </div>
+
+    <div class="additional-content mt-5 p-4 rounded">
+        <p>Cajas a Medida
+        Cajas de cartón corrugado según las dimensiones y especificaciones de tu producto. Perfectas para empresas que necesitan soluciones personalizadas. Una solución pensada para negocios que requieren empaques exclusivos y producción en volumen</p>
+
+        <ul>
+            <li>
+                Cajas nuevas y de segunda a medida: desde 300 unidades.
+            </li>
+
+            <li>
+                Cajas troqueladas personalizadas: a partir de 1000 unidades.
+            </li>
+        </ul>
+    </div>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="custom-quote-card p-4 p-md-5 rounded-3 shadow">
+                <h2 class="text-center mb-4 text-uppercase fw-bold ">Solicita tu Cotización Personalizada</h2>
+                
+                <p class="text-center mb-4 lead text-white">
+                    Completa el siguiente formulario con las especificaciones. ¡Pulsa "Enviar" y la solicitud llegará automáticamente a fabricajas@hotmail.com!
+                </p>
+
+                <form id="customQuoteForm" action="https://formspree.io/f/xbjvdvja" method="POST">
+                    
+                    <span class="span-cotizar">Cotizar</span>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-3">
+                            <label for="largo" class="form-label text-white fw-bold">Largo (cm)</label>
+                            <input placeholder="Largo" type="number" class="form-control" id="largo" name="Largo" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="ancho" class="form-label text-white fw-bold">Ancho (cm)</label>
+                            <input placeholder="Ancho" type="number" class="form-control" id="ancho" name="Ancho" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="alto" class="form-label text-white fw-bold">Alto (cm)</label>
+                            <input placeholder="Alto" type="number" class="form-control" id="alto" name="Alto" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="peso" class="form-label text-white fw-bold">Peso (Kg)</label>
+                            <input placeholder="Peso KG" type="number" step="0.1" class="form-control" id="peso" name="Peso_Producto" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-white fw-bold d-block mb-3">Calibre:</label>
+                        <div class="d-flex flex-wrap gap-4 align-items-center custom-radio-group">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="carton_doble" name="Calibre" value="Doble Pared" required>
+                                <label class="form-check-label text-white" for="carton_doble">Cartón de doble pared</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="carton_sencillo" name="Calibre" value="Sencillo" required>
+                                <label class="form-check-label text-white" for="carton_sencillo">Cartón sencillo</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label for="nombres_cliente" class="form-label text-white fw-bold">Nombres</label>
+                            <input placeholder="Nombres" type="text" class="form-control" id="nombres_cliente" name="Nombres_Cliente" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="apellidos_cliente" class="form-label text-white fw-bold">Apellidos</label>
+                            <input placeholder="Apellidos" type="text" class="form-control" id="apellidos_cliente" name="Apellidos_Cliente" required>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label text-white fw-bold">Email</label>
+                            <input placeholder="Correo Electronico" type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label text-white fw-bold">Teléfono</label>
+                            <input placeholder="Numero Telefonico" type="tel" class="form-control" id="telefono" name="telefono">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="fecha" class="form-label text-white fw-bold">Fecha del Encargo</label>
+                        <input type="date" class="form-control" id="fecha" name="Fecha_Encargo" required>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="mensaje" class="form-label text-white fw-bold">Mensaje / Instrucciones</label>
+                        <textarea placeholder="Instrucciones" class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-lg btn-cotizar fw-bold">
+                            <i class="fas fa-paper-plane me-2"></i> Enviar Cotización
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <div class="social-icons mb-3">
+                <a href="https://wa.me/573104420576" target="_blank" class="social-icon">
+                    <img src="img/whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100095161202567" target="_blank" class="social-icon">
+                    <img src="img/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/fabri.cajas/?hl=es-la" target="_blank" class="social-icon">
+                    <img src="img/instagramNuevo.png" alt="Instagram">
+                </a>
+            </div>
+            <p class="footer-text mb-0">© fabricajas.com.co. Reservados todos los derechos.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script> 
+</body>
+</html>

@@ -1,0 +1,1116 @@
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #FFAA17;
+    --secondary: #BDBDBF;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #F4F5F8;
+    --dark: #222429;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Oswald", sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --color-navbar-bg: rgba(0, 0, 0, 0.4);
+    --color-navbar-text: var(--dark);
+    --color-navbar-active: var(--primary);
+    --color-phone-btn-bg: var(--primary);
+    --color-phone-btn-text: var(--dark);
+    --color-navbar-line: var(--primary);
+}
+
+/* Base styles and fonts */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.main-content {
+    flex: 1; /* Esto hace que el contenido ocupe todo el espacio */
+}
+
+/* Estilos de Body corregidos para responsividad */
+body {
+    overflow-x: hidden; /* Esto es clave para evitar el scroll horizontal */
+    font-family: var(--font-family-sans-serif);
+    line-height: 1.6;
+    background-color: var(--light);
+    color: var(--gray-dark);
+    background-image: none;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: auto; /* Cambiado a auto para evitar conflictos */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+    background-image: url('../img/fondoproductos.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+/* Header and navbar */
+.page-header {
+    position: relative;
+    height: auto; /* Incrementa la altura a 180px, por ejemplo */
+    background-color: var(--light);
+    z-index: 2;
+}
+
+.navbar {
+    background-color: var(--light);
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+.navbar-brand .logo {
+    height: auto; 
+    max-height: 120px; 
+    width: 100%; 
+    max-width: 120px;
+    object-fit: contain;
+    font-family: var(--font-family-sans-serif);
+    font-weight: 300;
+}
+
+.navbar-nav .nav-link {
+    color: var(--color-navbar-text);
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-navbar-line);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+    color: var(--color-navbar-active);
+}
+
+.navbar-nav .nav-link:hover::after, .navbar-nav .nav-link:focus::after {
+    width: 100%;
+}
+
+/* --- SOLUCIÓN PARA EL PROBLEMA --- */
+
+/* Restablece el color y el estilo cuando el enlace ha sido visitado o ha perdido el foco */
+.navbar-nav .nav-link:visited,
+.navbar-nav .nav-link:active {
+    color: var(--color-navbar-text); /* Vuelve al color original */
+}
+
+.navbar-nav .nav-link:visited::after,
+.navbar-nav .nav-link:active::after {
+    width: 0; /* Asegura que la línea de abajo desaparezca */
+}
+
+
+
+.btn-phone {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-phone-btn-bg);
+    color: var(--color-phone-btn-text);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.btn-phone:hover {
+    background-color: var(--color-phone-btn-bg);
+}
+
+.phone-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    animation: phone-ring 2s infinite ease-in-out;
+}
+
+.btn-phone::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+    z-index: -1;
+}
+
+.btn-phone:hover::before {
+    width: 150%;
+    height: 150%;
+    opacity: 1;
+}
+
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    animation: whatsapp-ring 2s infinite ease-in-out;
+}
+
+@keyframes whatsapp-ring {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.1) rotate(5deg); }
+    30% { transform: scale(1.1) rotate(-5deg); }
+    45% { transform: scale(1.1) rotate(5deg); }
+    60% { transform: scale(1.1) rotate(-2deg); }
+    75% { transform: scale(1.1) rotate(2deg); }
+    100% { transform: scale(1); }
+}
+
+.main-content {
+    color: var(--light);
+    padding-top: 0rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content-main {
+    min-height: 300px; /* Puedes ajustar este valor para la altura que desees */
+    background-color: var(--primary);
+}
+
+.hero-content-main p {
+    margin-bottom: 1rem; /* Ajusta este valor para más o menos espacio */
+     font-size: 1.3rem; /* Puedes ajustar este valor si necesitas un tamaño diferente */
+}
+
+.center-logo {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.logo-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: var(--light);
+    box-shadow: 0 4px 10px var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem auto 0; /* Changed from margin: 0 auto; */
+}
+
+.company-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    text-align: center; /* Asegura que el texto esté centrado por defecto */
+}
+
+.hero-text {
+    color: var(--dark);
+    font-size: 1.5rem;
+    max-width: 800px;
+}
+
+
+.hero-text-container {
+    flex: 1;
+}
+
+/* Estilos para el botón de 'Explorar' (btn-explore) */
+.btn-explore {
+    background-color: var(--primary);
+    color: var(--dark);
+    padding: 1rem 2.5rem;
+    font-family: var(--font-family-sans-serif);
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+    /* Corrección para que no se estire de más en tablets */
+    max-width: 350px; 
+    width: 100%;
+}
+
+.btn-explore:hover {
+    transform: translateY(-5px);
+}
+
+.btn-explore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    z-index: -1;
+}
+
+.btn-explore:hover::before {
+    transform: translateX(0);
+}
+
+
+/* Additional content */
+
+.additional-content {
+    color: var(--light);
+    text-align: center;
+    font-family: var(--font-family-sans-serif);
+    font-size: 20px;
+    font-weight: 300;
+    max-width: 600px; /* Limita el ancho máximo del contenedor */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+}
+
+/* ==================== ESTILOS PARA LOS RECUADROS ==================== */
+
+/* Sección de recuadros sin fondo para que el original de la página se vea */
+.boxes-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+/* Tarjetas (recuadros) con esquinas redondeadas y sombra */
+.card {
+    border: none;
+    border-radius: 10px;
+    font-family: var(--font-family-sans-serif);
+    box-shadow: 0 50px 50px var(--dark);
+    background-color: var(--light); /* Fondo gris claro semitransparente */
+    color: var(--gray-dark); /* Cambia el color del texto a oscuro */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto de elevación al pasar el mouse */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos de la imagen dentro de la tarjeta */
+.card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: contain; /* Asegura que la imagen se vea completa sin estirarse */
+    padding: 1rem;
+}
+
+/* Cuerpo de la tarjeta para una distribución flexible */
+.card-body {
+    flex-grow: 1; /* Permite que el cuerpo se expanda y las tarjetas tengan la misma altura */
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para el texto */
+.card-text {
+    display: flex;
+    justify-content: center;
+    font-family: "Monserrat", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* Estilos para el título de la tarjeta, que ahora será un h5 con la clase card-title */
+.card-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 1rem; /* Añade espacio entre el título y la imagen */
+}
+
+/* Pie de la tarjeta */
+.card-footer {
+    border-top: none;
+    background-color: transparent;
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+/* Estilos para el botón 'Personalizado' (btn-custom) dentro de las tarjetas */
+.btn-custom {
+    background-color: var(--primary);
+    color: var(--dark);
+    font-weight: bold;
+    font-family: var(--font-family-sans-serif);
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+    width: 50%;
+    /* Corrección para que no se estire de más en tablets */
+    max-width: 250px; 
+    margin: 0 auto; /* Para centrarlo si el contenedor es más grande */
+}
+
+.btn-custom:hover {
+    background-color: #e69500;
+}
+
+
+/* Responsive styles */
+@media (max-width: 992px) {
+        .navbar-toggler {
+            display: block;
+            background-color: var(--dark);
+        }
+        .navbar-collapse {
+        background-color: var(--gray);
+        text-align: center;
+        padding-bottom: 1rem;
+        }
+        .navbar-nav {
+        flex-direction: column;
+    }
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+    .btn-phone {
+        margin-top: 1rem;
+    }
+    .hero-content-main {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .company-name {
+        font-size: 2.5rem;
+    }
+    .hero-text {
+        font-size: 1.2rem;
+    }
+    .center-logo {
+        width: 200px;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-nav {
+        flex-direction: row;
+        margin-left: auto !important;
+    }
+}
+
+/* Sección de Clientes */
+.clients-section {
+    background-color: transparent; 
+    padding: 3rem 0;
+}
+
+.clients-title {
+    font-weight: bold;
+    color: var(--light);
+    font-size: 2.5rem;
+}
+
+/* Estilo del recuadro del cliente, ahora semitransparente */
+.client-card {
+    background-color: rgba(240, 240, 240, 0.8); 
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 250px;
+    margin: 0 auto;
+    max-width: 600px; 
+}
+
+/* Estilo del logo del cliente */
+.client-logo {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo del texto */
+.client-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--dark);
+}
+
+/* Estilos para las flechas de navegación del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.5); 
+    border-radius: 50%; 
+    padding: 1rem;
+    background-size: 50% 50%;
+    transition: background-color 0.3s ease; 
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: var(--primary); 
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+
+/* ==================== SECCIÓN DE CONTACTO ==================== */
+.contact-section {
+    background-color: transparent;
+    padding: 3rem 0;
+}
+
+.contact-title {
+    font-weight: bold;
+    color: var(--dark);
+    font-size: 2.5rem;
+}
+
+.contact-content {
+    align-items: stretch; 
+}
+
+/* Estilo para el recuadro de información de contacto */
+.contact-card {
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(240, 240, 240, 0.8),
+        rgba(255, 255, 255, 0.6)
+    );
+    border-radius: 15px;
+    padding: 2.5rem;
+    height: 100%; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--dark);
+}
+
+.contact-card .card-title {
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.contact-card .contact-list li {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-card .contact-list li strong {
+    margin-right: 8px;
+}
+
+.contact-card .contact-list li i {
+    color: var(--primary);
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.contact-card .contact-list li a {
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-card .contact-list li a:hover {
+    color: var(--primary);
+}
+
+/* Estilo para el contenedor del mapa */
+.map-container {
+    height: 100%;
+    min-height: 400px; /* Altura mínima del mapa en pantallas grandes */
+    border-radius: 15px;
+    overflow: hidden; /* Oculta los bordes del mapa que sobresalen */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Media Query para pantallas pequeñas (móviles y tablets) */
+@media (max-width: 992px) {
+    .navbar-toggler {
+        display: block;
+        background-color: var(--dark);
+    }
+    .navbar-collapse {
+        background-color: var(--gray);
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+    .navbar-nav {
+        flex-direction: column;
+    }
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+    .btn-phone {
+        margin-top: 1rem;
+    }
+    
+    .hero-content-main {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        /* Añadir padding horizontal para evitar que el contenido se corte */
+        padding-left: 1rem; 
+        padding-right: 1rem;
+    }
+
+    .company-name {
+        font-size: 2.5rem;
+        margin-left: 0; /* Asegura que no haya margen negativo en móviles */
+    }
+
+    .hero-text {
+        font-size: 1.2rem;
+        /* Añadir padding al texto para mejor legibilidad */
+        padding: 0 1rem; 
+    }
+
+    .center-logo {
+        width: 200px;
+        margin: 1.5rem auto 0; /* Centra el logo en el contenedor */
+    }
+
+    /* Ajustes para las tarjetas de productos en móviles */
+    .boxes-section .card {
+        margin-bottom: 2rem; /* Espacio entre tarjetas apiladas */
+    }
+
+    /* Asegura que los contenedores de clientes y contacto tengan padding */
+    .clients-section .col-12,
+    .contact-section .col-md-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .contact-info-col {
+        margin-bottom: 2rem; /* Espacio entre los recuadros de contacto y mapa */
+    }
+}
+/* ==================== FOOTER ==================== */
+.footer {
+    background-color: var(--dark);
+    color: var(--light); /* Esto hará que el texto del footer sea legible */
+     border-top: 5px solid var(--primary); /* Esto añade la línea amarilla */
+}
+
+.footer-text {
+    color: var(--light); 
+}
+
+.social-icons a {
+    margin: 0 15px;
+    display: inline-block;
+}
+
+.social-icons a img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.1);
+}
+
+/* ==================== BOTÓN SCROLL-TO-TOP ==================== */
+.to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary);
+    color: var(--dark);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilos de la cabecera (Página de Productos) */
+.productos-header {
+    background-color: var(--primary);
+    height: 300px; /* Aumenta el tamaño del header hacia abajo */
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.productos-header .page-title {
+    font-size: 3rem; 
+    font-weight: 900;
+    color: var(--dark);
+    font-family: var(--font-family-sans-serif);
+    margin-bottom: 0.5rem;
+    transform: scaleY(1.2); /* Alarga la letra del título */
+}
+
+.productos-header .page-breadcrumb h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-family-sans-serif);
+}
+
+.productos-header .page-breadcrumb h6,
+.productos-header .page-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Estilos de la cabecera (Página de Nosotros) */
+.nosotros-header {
+    background-color: var(--primary);
+    height: 300px; /* Aumenta el tamaño del header hacia abajo */
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.nosotros-header .page-title {
+    font-size: 3rem; 
+    font-weight: 900;
+    color: var(--dark);
+    font-family: var(--font-family-sans-serif);
+    margin-bottom: 0.5rem;
+    transform: scaleY(1.2); /* Alarga la letra del título */
+}
+
+.nosotros-header .page-breadcrumb h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-family-sans-serif);
+}
+
+.nosotros-header .page-breadcrumb h6,
+.nosotros-header .page-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Estilos de la cabecera (Página de Cajas de Segunda) */
+
+.segunda-header {
+    background-color: var(--primary);
+    height: 300px; /* Aumenta el tamaño del header hacia abajo */
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.segunda-header .page-title {
+    font-size: 3rem; 
+    font-weight: 900;
+    color: var(--dark);
+    font-family: var(--font-family-sans-serif);
+    margin-bottom: 0.5rem;
+    transform: scaleY(1.2); /* Alarga la letra del título */
+}
+
+.segunda-header .page-breadcrumb h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-family-sans-serif);
+}
+
+.segunda-header .page-breadcrumb h6,
+.segunda-header .page-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --- Estilos para el catálogo de productos de Segunda --- */
+
+/* Estilos para las tarjetas de producto */
+.tarjeta-producto-segunda {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    transition: transform 0.3s ease-in-out;
+}
+
+.tarjeta-producto-segunda:hover {
+    transform: translateY(-5px);
+}
+
+.tarjeta-producto-segunda .card-body {
+    /* Padding para un recuadro más estético */
+    padding: 1rem; 
+}
+
+/* Estilos para la imagen del producto */
+.imagen-producto-segunda {
+    max-width: 100%; 
+    width: auto;     
+    height: auto;    
+    max-height: 250px; 
+    object-fit: contain;
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--light);
+}
+
+/* Estilos para el título del producto */
+.tarjeta-producto-segunda .card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--dark);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para el botón de "Cotizar" */
+.btn-cotizar-segunda {
+    background-color: var(--primary);
+    color: var(--dark);
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.btn-cotizar-segunda:hover {
+    background-color: #e69500;
+}
+
+/* Asegura que el texto largo se corte con puntos suspensivos */
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Estilos para la Sección de Descarga de Catálogo --- */
+
+/* Estilo para el texto "Si quieres saber sobre nuestros precios..." */
+.container p.fs-5 {
+    /* CAMBIO 1: El color del texto debe ser light, pero con la clase .catalogo-text, esta línea es redundante si usas la clase. */
+    color: var(--light); 
+    
+    font-family: var(--font-family-sans-serif); 
+    font-weight: 500;
+    margin-top: 2rem;
+}
+
+/* AÑADIDO: Nueva regla específica para el color del texto si se le aplica la clase .catalogo-text */
+.catalogo-text {
+    color: var(--light) !important; 
+}
+
+
+/* Estilo para el botón de éxito (Descargar Catálogo) */
+.btn-success {
+    /* Color base: --primary (Naranja/Amarillo) */
+    background-color: var(--primary) !important; 
+    border-color: var(--primary) !important;
+    
+    color: var(--white) !important;  
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Estilo para el botón al pasar el mouse (hover) o al enfocar (focus) */
+.btn-success:hover,
+.btn-success:focus {
+    /* Color de hover/focus: --green (Verde) */
+    background-color: var(--primary) !important; 
+    border-color: var(--primary) !important;
+    
+    color: var(--white) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    /* Importante: Eliminar el outline en focus para evitar estilos persistentes del navegador */
+    outline: none !important;
+}
+
+/* Forzar que después del clic o de ser visitado, el botón regrese al color base: --primary */
+.btn-success:active,
+.btn-success:visited {
+    /* Debe ser el color base (Naranja/Amarillo) */
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--white) !important;
+    /* Eliminar cualquier sombra o borde de foco persistente */
+    box-shadow: none !important; 
+}
+
+/* Estilo para el tamaño grande del botón (clase Bootstrap .btn-lg) */
+.btn-lg {
+    padding: 0.75rem 1.5rem; 
+    font-size: 1.25rem;
+    border-radius: 0.3rem;
+}
+
+/* --- Estilos para la Sección de Nosotros (Clientes) --- */
+
+/* Estilo para el contenedor del texto de la reseña, asegurando el color blanco */
+.text-white {
+    color: var(--white) !important;
+}
+
+/* Estilo para el contenedor de los logos de clientes (círculos) */
+.client-circle {
+    /* Define el tamaño del círculo */
+    width: 100px; 
+    height: 100px; 
+    
+    /* Le da el color de fondo blanco */
+    background-color: var(--white); 
+    
+    /* Lo convierte en un círculo perfecto */
+    border-radius: 50%; 
+    
+    /* Centra el logo/imagen dentro */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    
+    /* Recorta la imagen del logo si excede el borde del círculo */
+    overflow: hidden; 
+    
+    /* Sombra y borde para que destaque */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border: 2px solid var(--primary); /* Usamos el color primario para un toque de marca */
+    
+    /* Animación opcional */
+    transition: transform 0.3s ease-in-out;
+}
+
+.client-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo para asegurar que el logo (la etiqueta <img>) se ajuste bien dentro del círculo */
+.client-circle img {
+    /* La imagen ocupa todo el contenedor */
+    width: 100%; 
+    height: 100%; 
+    
+    /* Mantiene la proporción de la imagen y la centra, recortando si es necesario para llenar el círculo. */
+    object-fit: contain; 
+    
+    /* Un pequeño espacio alrededor del logo para que no toque el borde del círculo. Ajusta si es necesario. */
+    padding: 10px; 
+}
+
+/* --- Estilos para los Recuadros de Imágenes --- */
+
+.image-box {
+    /* Mantenemos estos estilos para dar un marco y sombra a las imágenes */
+    background-color: var(--white); 
+    border-radius: 10px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-box:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.box-img {
+    /* CRUCIAL: Define el alto y el ajuste para que ambos recuadros se vean iguales */
+    width: 100%;
+    height: auto; /* Ajusta esta altura si lo necesitas */
+    object-fit: cover; 
+    border-radius: 10px; 
+}
+
+/* Estilos de la cabecera (Página de Cajas a Medida) */
+
+.medida-header {
+    background-color: var(--primary);
+    height: 300px; /* Aumenta el tamaño del header hacia abajo */
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.medida-header .page-title {
+    font-size: 3rem; 
+    font-weight: 900;
+    color: var(--dark);
+    font-family: var(--font-family-sans-serif);
+    margin-bottom: 0.5rem;
+    transform: scaleY(1.2); /* Alarga la letra del título */
+}
+
+.medida-header .page-breadcrumb h6 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-family-sans-serif);
+}
+
+.medida-header .page-breadcrumb h6,
+.medida-header .page-breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* --- ESTILOS PARA LA TARJETA DE COTIZACIÓN --- */
+.custom-quote-card {
+    background-color: rgba(34, 36, 41, 0.9); /* Dark background más sólido */
+    color: var(--light);
+    position: relative; /* Necesario para la posición del span-cotizar */
+    /* Elimina las propiedades de margin-left: 185px, width: 850px, etc., del form anterior */
+}
+
+/* Estilo para la etiqueta flotante 'Cotizar' */
+.span-cotizar {
+    background-color: var(--primary); /* Asumo que --primary es el naranja/amarillo */
+    padding: 8px 15px;
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    position: absolute; /* Posicionamiento absoluto respecto a custom-quote-card */
+    top: 0; 
+    right: 0; 
+    transform: translate(15px, -15px); /* Desplaza la etiqueta fuera de la esquina */
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos de los inputs y selects dentro de la tarjeta */
+.custom-quote-card .form-control, 
+.custom-quote-card .form-select {
+    background-color: var(--light); 
+    border: 1px solid var(--primary);
+    color: var(--dark);
+}
+
+.custom-quote-card .form-label {
+    color: var(--light) !important;
+}
+
+/* Estilo para el botón Enviar */
+.btn-cotizar {
+    background-color: #FAA300; /* Color naranja/amarillo fuerte */
+    color: #000;
+    border: 2px solid #000;
+    padding: 10px 20px;
+    border-radius: 6px; /* Ajustado para un diseño moderno */
+    transition: background-color 0.3s ease;
+}
+
+.btn-cotizar:hover {
+    background-color: #e09400; /* Tono más oscuro al pasar el mouse */
+    color: #000;
+    border-color: #000;
+}
