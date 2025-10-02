@@ -660,6 +660,66 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
         margin-right: 0 !important;
     }
 }
+/* ==================== NUEVO ESTILO: FOTO PRINCIPAL 3D (Sección Nosotros) ==================== */
+
+.main-circle-photo-container {
+    /* Contenedor que ayuda a centrar y define el tamaño de la escena */
+    width: 350px; /* Ancho deseado para el círculo grande */
+    height: 350px; /* Altura deseada para el círculo grande */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.main-circle-photo {
+    /* El círculo en sí */
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--light);
+    
+    /* ---------------------------------------------------- */
+    /* EFECTO 3D Y RELIEVE */
+    /* ---------------------------------------------------- */
+    
+    /* 1. Sombra interna para el efecto de hundimiento (relieve) */
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.4), /* Sombra interior oscura sutil */
+        
+        /* 2. Borde exterior doble (simulando 3D) */
+        0 0 0 8px var(--primary), /* Borde primary principal */
+        0 0 0 15px rgba(255, 255, 255, 0.1), /* Borde de luz sutil (brillo 3D) */
+
+        /* 3. Sombra de profundidad para levantar el círculo */
+        5px 5px 15px rgba(0, 0, 0, 0.5); 
+        
+    /* Transformación sutil para dar la sensación de que está inclinado */
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transición suave */
+}
+
+/* Efecto al pasar el mouse (opcional, pero mejora el 3D) */
+.main-circle-photo:hover {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    box-shadow: 
+        inset 0 0 15px rgba(0, 0, 0, 0.6),
+        0 0 0 10px var(--primary), 
+        0 0 0 20px rgba(255, 255, 255, 0.2),
+        10px 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+
+.main-circle-photo img {
+    /* Ajuste de la imagen dentro del círculo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el círculo */
+    border-radius: 50%; /* Esto no es estrictamente necesario ya que el contenedor tiene overflow, pero es buena práctica */
+}
+
 
 /* ==================== SECCIÓN DE CONTACTO ==================== */
 .contact-section {
@@ -800,7 +860,6 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 /* ==================== ESTILOS DE CABECERAS DE PÁGINAS ==================== */
 
 .productos-header,
-.nosotros-header,
 .segunda-header,
 .medida-header {
     /* Estilos de cabecera base para páginas internas */
@@ -815,7 +874,6 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 }
 
 .productos-header .page-title,
-.nosotros-header .page-title,
 .segunda-header .page-title,
 .medida-header .page-title {
     /* Título principal de las cabeceras internas */
@@ -829,8 +887,6 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 
 .productos-header .page-breadcrumb h6,
 .productos-header .page-breadcrumb a,
-.nosotros-header .page-breadcrumb h6,
-.nosotros-header .page-breadcrumb a,
 .segunda-header .page-breadcrumb h6,
 .segunda-header .page-breadcrumb a,
 .medida-header .page-breadcrumb h6,
@@ -1129,4 +1185,63 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     background-color: #e09400;
     color: #000;
     border-color: #000;
+}
+
+/* ==================== BOTÓN FLOTANTE DE WHATSAPP ==================== */
+
+.whatsapp-float {
+    /* Posicionamiento y tamaño */
+    position: fixed; /* Se mantiene visible al hacer scroll */
+    width: 60px; 
+    height: 60px;
+    bottom: 40px; /* Separación del fondo */
+    right: 30px; /* Separación de la derecha */
+    
+    /* Estilo visual */
+    background-color: #25d366; /* Verde WhatsApp oficial */
+    color: #FFF;
+    border-radius: 50px; /* Círculo perfecto */
+    font-size: 28px;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-decoration: none; /* Quita el subrayado del enlace */
+    
+    /* Centrado del icono */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Animación de movimiento suave (breathe) */
+    animation: whatsapp-breathe 2s ease-in-out infinite; 
+    transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-float:hover {
+    /* Efecto al pasar el mouse */
+    transform: scale(1.1); /* Agranda ligeramente */
+    animation-play-state: paused; /* Pausa el movimiento al pasar el mouse */
+}
+
+/* Animación de respiración/flotación */
+@keyframes whatsapp-breathe {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px); /* Se mueve 5px hacia arriba */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes Responsivos para móviles */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 15px;
+        font-size: 24px;
+    }
 }
