@@ -84,10 +84,43 @@ body::before {
     z-index: -1;
 }
 
+body {
+    font-size: 16px;
+}
+
+h1, .page-title {
+    font-size: clamp(1.75rem, 5vw, 3rem); /* escala de móviles a desktop */
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+p, .hero-text, .card-text, .client-text, .catalogo-text {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+
+img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Evita que imágenes u otros elementos forcen el scroll horizontal */
+.container, .row, .col {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Botones */
+.btn, .btn-explore, .btn-custom, .btn-cotizar-segunda {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
 /* Header and navbar */
 .page-header {
     position: relative;
-    height: auto; /* Incrementa la altura a 180px, por ejemplo */
+    height: auto; 
     background-color: var(--light);
     z-index: 2;
 }
@@ -99,6 +132,7 @@ body::before {
     z-index: 10;
 }
 
+/* Al usar navbar-dark en el HTML, aseguramos que el logo se vea bien en esta barra clara */
 .navbar-brand .logo {
     height: auto; 
     max-height: 120px; 
@@ -148,7 +182,6 @@ body::before {
 .navbar-nav .nav-link:active::after {
     width: 0; /* Asegura que la línea de abajo desaparezca */
 }
-
 
 
 .btn-phone {
@@ -224,14 +257,17 @@ body::before {
     text-align: center;
 }
 
+/* CORRECCIÓN 2: Asegurar el espaciado interno de la sección amarilla */
 .hero-content-main {
-    min-height: 300px; /* Puedes ajustar este valor para la altura que desees */
+    min-height: 300px; 
     background-color: var(--primary);
+    padding-top: 2rem;    /* Espacio superior interno */
+    padding-bottom: 2rem; /* Espacio inferior interno */
 }
 
 .hero-content-main p {
-    margin-bottom: 1rem; /* Ajusta este valor para más o menos espacio */
-     font-size: 1.3rem; /* Puedes ajustar este valor si necesitas un tamaño diferente */
+    margin-bottom: 1rem; 
+    font-size: 1.3rem; 
 }
 
 .center-logo {
@@ -240,30 +276,33 @@ body::before {
     object-fit: contain;
 }
 
+/* CORRECCIÓN 1: Agregar margin-bottom para separar el logo de la sección amarilla */
 .logo-container {
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: clamp(150px, 40vw, 250px);
+    height: clamp(150px, 40vw, 250px);
     border-radius: 50%;
-    background-color: var(--light);
+    background-color: var(--light); /* Fondo BLANCO para la barrera */
     box-shadow: 0 4px 10px var(--dark);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1.5rem auto 0; /* Changed from margin: 0 auto; */
+    margin: 1.5rem auto 1.5rem; 
 }
 
 .company-name {
     font-size: 2rem;
     font-weight: bold;
+    color: var(--light); 
     margin-bottom: 0.5rem;
     font-family: "Montserrat", sans-serif;
     width: 100%;
-    text-align: center; /* Asegura que el texto esté centrado por defecto */
+    text-align: center; 
 }
 
 .hero-text {
-    color: var(--dark);
+    /* Mantenemos el color oscuro para que resalte sobre el amarillo */
+    color: var(--dark); 
     font-size: 1.5rem;
     max-width: 800px;
 }
@@ -421,42 +460,100 @@ body::before {
 
 
 /* Responsive styles */
-@media (max-width: 992px) {
-        .navbar-toggler {
-            display: block;
-            background-color: var(--dark);
-        }
-        .navbar-collapse {
-        background-color: var(--gray);
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .card-title, .card-text {
+        font-size: 1.1rem;
         text-align: center;
-        padding-bottom: 1rem;
-        }
-        .navbar-nav {
-        flex-direction: column;
     }
-    .nav-item {
-        margin: 0.5rem 0;
+
+    .btn {
+        width: 100%;
     }
-    .btn-phone {
-        margin-top: 1rem;
-    }
-    .hero-content-main {
-        flex-direction: column;
+
+    .hero-text, .additional-content, .client-text {
+        padding: 0 1rem;
         text-align: center;
-        gap: 1rem;
     }
-    .company-name {
-        font-size: 2.5rem;
+
+    .contact-card, .client-card {
+        padding: 1.5rem;
     }
-    .hero-text {
-        font-size: 1.2rem;
+
+    .footer-text {
+        font-size: 0.9rem;
+        text-align: center;
     }
-    .center-logo {
-        width: 200px;
-        margin-right: 0;
+
+    .contact-card, .client-card {
+        padding: 1.5rem; 
+    }
+    /* 👇 SOLUCIÓN PARA EL CORTE DE TEXTO EN S8+ 👇 */
+    .contact-card {
+        /* Reducir el padding lateral para darle más espacio al contenido interno */
+        padding-left: 1rem !important; /* ~16px */
+        padding-right: 1rem !important; /* ~16px */
+    }
+
+    .contact-card .contact-list li {
+        /* Permite que la lista fluya mejor */
+        flex-wrap: wrap; 
+        font-size: 1rem; /* Ligeramente más pequeño para caber */
+    }
+    .contact-card .contact-list li i {
+        /* Menos margen para que haya más espacio para el texto */
+        margin-right: 8px;
+    }
+    /* CORRECCIÓN 4: Estilo del CONTENEDOR del botón hamburguesa en móviles */
+    .navbar-toggler {
+        background-color: var(--primary) !important;
+        border: 2px solid var(--dark) !important; 
+        padding: 0.5rem 0.75rem; 
+        border-radius: 5px; 
+    }
+    .navbar-collapse {
+        background-color: var(--gray-dark); /* Fondo oscuro para el menú desplegado */
+    }
+    .navbar-nav .nav-link {
+        color: var(--light) !important; /* Forzar el texto del menú a blanco */
     }
 }
 
+/* CORRECCIÓN 3: Rango Crítico de Pantalla para el botón que salta (769px a 991px) */
+@media (min-width: 769px) and (max-width: 991px) {
+    /* Ajuste para que el texto del botón 'cajas troqueladas' no salte */
+    .btn-custom {
+        /* Reducimos el tamaño de fuente para que "REFERENCIAS TROQUELADAS" quepa */
+        font-size: 0.85rem; 
+        padding: 0.7rem 1.2rem; /* Ajuste del padding para dar más espacio horizontal */
+        max-width: 250px; /* Asegura el ancho máximo */
+    }
+    /* El título de la tarjeta también debe reducirse para que no empuje el botón */
+    .card-title {
+        font-size: 1.3rem; 
+    }
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+@media (max-width: 576px) {
+    .to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
 @media (min-width: 992px) {
     .navbar-nav {
         flex-direction: row;
@@ -603,73 +700,116 @@ body::before {
     border: 0;
 }
 
-/* Media Query para pantallas pequeñas (móviles y tablets) */
+@media (min-width: 1200px) {
+    /* 1. Contenedores de texto: Limitar el ancho para legibilidad */
+    .hero-text-container, .additional-content {
+        max-width: 1000px; /* Evita que el texto se extienda demasiado */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 2. Barra de Navegación: Separación de elementos */
+    .navbar-nav .nav-item {
+        margin-left: 20px; /* Aumentar el espacio entre los links */
+    }
+
+    /* 3. Ajuste de Header (si fuera necesario un tamaño diferente) */
+    .page-header-base {
+        height: 350px; /* Un poco más de altura en grandes pantallas */
+    }
+}
+
 @media (max-width: 992px) {
-    .navbar-toggler {
-        display: block;
-        background-color: var(--dark);
-    }
+    /* 1. Navbar: Asegurar el menú hamburguesa */
     .navbar-collapse {
-        background-color: var(--gray);
-        text-align: center;
-        padding-bottom: 1rem;
+        /* Ya lo tiene: mejora la visibilidad del menú desplegado */
+        background-color: var(--gray-dark); 
+        z-index: 99;
+        width: 100%;
     }
-    .navbar-nav {
-        flex-direction: column;
-    }
-    .nav-item {
-        margin: 0.5rem 0;
-    }
-    .btn-phone {
-        margin-top: 1rem;
+    .navbar-nav .nav-link {
+        /* Ya lo tiene: texto blanco en menú desplegado */
+        color: var(--light); 
     }
     
-    .hero-content-main {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-        /* Añadir padding horizontal para evitar que el contenido se corte */
-        padding-left: 1rem; 
-        padding-right: 1rem;
+    /* 2. Botón de teléfono: Centrarlo bien */
+    .btn-phone {
+        margin: 1rem auto; 
     }
 
-    .company-name {
-        font-size: 2.5rem;
-        margin-left: 0; /* Asegura que no haya margen negativo en móviles */
+    /* 3. Contenido Principal: Espaciado y fluidez */
+    .hero-content-main, .clients-section, .contact-section, .boxes-section {
+        /* Reduce el padding general en secciones para ahorrar espacio vertical */
+        padding: 2rem 1rem; 
     }
 
-    .hero-text {
-        font-size: 1.2rem;
-        /* Añadir padding al texto para mejor legibilidad */
-        padding: 0 1rem; 
-    }
-
-    .center-logo {
-        width: 200px;
-        margin: 1.5rem auto 0; /* Centra el logo en el contenedor */
-    }
-
-    /* Ajustes para las tarjetas de productos en móviles */
-    .boxes-section .card {
-        margin-bottom: 2rem; /* Espacio entre tarjetas apiladas */
-    }
-
-    /* Asegura que los contenedores de clientes y contacto tengan padding */
-    .clients-section .col-12,
-    .contact-section .col-md-6 {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
+    /* 4. Contacto (Ajuste esencial): Mover el mapa debajo de la info */
+    /* Añada un margen inferior para separar la tarjeta de contacto del mapa */
     .contact-info-col {
-        margin-bottom: 2rem; /* Espacio entre los recuadros de contacto y mapa */
+        margin-bottom: 2rem; 
+    }
+    /* Asegurar que el mapa sea responsive verticalmente */
+    .map-container {
+        min-height: 300px; /* Reducir la altura mínima del mapa en tablet */
+    }
+}
+
+@media (max-width: 576px) {
+    /* 1. Tipografía: Si necesita un ajuste más fino */
+    h1, .page-title {
+        font-size: 1.8rem; /* Un poco más pequeño que el clamp si es necesario */
+    }
+
+    /* 2. Logo en el Hero: Reducir tamaño del círculo */
+    .logo-container {
+        width: 120px;
+        height: 120px;
+        margin-top: 1rem; /* Reducir margen superior */
+        /* Asegura que el margin-bottom de 1.5rem se respete aquí también */
+        margin-bottom: 1.5rem; 
+    }
+    
+    /* 3. Botones: Ajustar relleno para mejor pulsación táctil */
+    .btn, .btn-explore {
+        padding: 0.75rem 1.5rem; 
+        font-size: 1rem;
+    }
+    .btn-explore {
+        width: 90%; /* Ocupar casi todo el ancho */
+    }
+
+    /* 4. Scroll-to-Top: Ya lo tiene, pero se puede refinar */
+    .to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 15px; /* Acercar al borde */
+        right: 15px;
+    }
+    /* CRÍTICO: Añade padding a las secciones para separarlas de los bordes */
+    .hero-content-main, 
+    .boxes-section, 
+    .clients-section, 
+    .contact-section {
+        /* Secciones con un padding horizontal de 15px-20px para el móvil */
+        padding-left: 1.25rem !important; /* ~20px */
+        padding-right: 1.25rem !important; /* ~20px */
+        /* Ya tienen padding vertical definido, solo forzamos el horizontal */
+    }
+
+    /* CRÍTICO: Asegura que el logo o elementos grandes se escalen */
+    img, iframe {
+        max-width: 100%;
+        height: auto;
+        /* Si algún elemento es la causa, forzar que no desborde */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
 /* ==================== FOOTER ==================== */
 .footer {
     background-color: var(--dark);
     color: var(--light); /* Esto hará que el texto del footer sea legible */
-     border-top: 5px solid var(--primary); /* Esto añade la línea amarilla */
+    border-top: 5px solid var(--primary); /* Esto añade la línea amarilla */
 }
 
 .footer-text {
@@ -841,8 +981,8 @@ body::before {
 /* Estilos para la imagen del producto */
 .imagen-producto-segunda {
     max-width: 100%; 
-    width: auto;     
-    height: auto;    
+    width: auto; 
+    height: auto;
     max-height: 250px; 
     object-fit: contain;
     border: 1px solid var(--light);
@@ -888,7 +1028,7 @@ body::before {
 
 /* Estilo para el texto "Si quieres saber sobre nuestros precios..." */
 .container p.fs-5 {
-    /* CAMBIO 1: El color del texto debe ser light, pero con la clase .catalogo-text, esta línea es redundante si usas la clase. */
+    /* El color del texto debe ser light */
     color: var(--light); 
     
     font-family: var(--font-family-sans-serif); 
@@ -907,8 +1047,7 @@ body::before {
     /* Color base: --primary (Naranja/Amarillo) */
     background-color: var(--primary) !important; 
     border-color: var(--primary) !important;
-    
-    color: var(--white) !important;  
+    color: var(--white) !important; 
     font-weight: 700;
     text-transform: uppercase;
     transition: background-color 0.3s, border-color 0.3s;
