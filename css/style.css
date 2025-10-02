@@ -1186,6 +1186,25 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     color: #000;
     border-color: #000;
 }
+/* ==================== AJUSTES DE TAMAÑO PARA LA IMAGEN DENTRO DEL FORM ==================== */
+
+/* Estilo para el contenedor visual de la imagen de dimensiones */
+.box-dimensions-visual {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03); 
+    border-radius: 10px;
+    max-width: 280px; 
+    margin: 0 auto 30px auto; /* Centrar el contenedor y darle margen inferior */
+}
+
+/* Estilo para la imagen de dimensiones */
+.box-dimension-img {
+    max-width: 100%; 
+    height: auto;
+    display: block; 
+    margin: 0 auto;
+}
 
 /* ==================== BOTÓN FLOTANTE DE WHATSAPP ==================== */
 
