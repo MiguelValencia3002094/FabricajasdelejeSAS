@@ -72,6 +72,9 @@
 
 <div class="container py-5">
     <div class="row justify-content-center">
+        
+        <div class="col-lg-2 d-none d-lg-block"></div>
+
         <div class="col-lg-8">
             <div class="custom-quote-card p-4 p-md-5 rounded-3 shadow">
                 <h2 class="text-center mb-4 text-uppercase fw-bold ">Solicita tu Cotización Personalizada</h2>
@@ -83,7 +86,11 @@
                 <form id="customQuoteForm" action="https://formspree.io/f/xbjvdvja" method="POST">
                     
                     <span class="span-cotizar">Cotizar</span>
-
+                    
+                    <div class="box-dimensions-visual text-center mb-5">
+                        <img src="img/referencia.png" alt="Referencia de Largo, Ancho y Alto de la caja" class="img-fluid box-dimension-img rounded-3 shadow">
+                        <p class="text-white mt-2 fw-bold small">Dimensiones a ingresar: Largo (L) x Ancho (A) x Alto (A)</p>
+                    </div>
                     <div class="row g-3 mb-4">
                         <div class="col-md-3">
                             <label for="largo" class="form-label text-white fw-bold">Largo (cm)</label>
@@ -165,6 +172,7 @@
                 </form>
             </div>
         </div>
+        <div class="col-lg-2 d-none d-lg-block"></div>
     </div>
 </div>
 
