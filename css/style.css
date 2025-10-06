@@ -660,67 +660,271 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
         margin-right: 0 !important;
     }
 }
-/* ==================== NUEVO ESTILO: FOTO PRINCIPAL 3D (Sección Nosotros) ==================== */
+/* ==================== ESTILOS ESPECÍFICOS: PÁGINA NOSOTROS ==================== */
+
+/* Variables locales específicas para el carrusel de clientes */
+:root {
+    --logo-size: 80px; 
+    --sphere-size: 300px; 
+    --rotation-speed: 25s; 
+}
+
+/* Sección 1: Nuestra Trayectoria (NOSOTROS) */
+.about-us-section {
+    padding: 60px 0; 
+    
+    /* GRADIENTE HACIA ABAJO: Blanco se difumina con el fondo var(--light) de la siguiente sección (Clientes) */
+    /* Hacemos la transición más larga (del 80% al 100%) para que sea más visible */
+    background: linear-gradient(
+        to bottom,
+        #ffffff,              
+        #ffffff 80%,           /* Se mantiene blanco hasta el 80% */
+        var(--light) 100%      /* Transiciona a color claro desde el 80% hasta el final */
+    );
+    margin-bottom: 0; 
+    position: relative; 
+    z-index: 2; 
+}
+
+.about-us-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 30px; 
+}
+
+.about-us-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px; 
+}
+
+
+/* ==================== ESTILOS ESPECÍFICOS: PÁGINA NOSOTROS ==================== */
+
+/* ------------------------------------- */
+/* SECCIÓN 1: NUESTRA TRAYECTORIA (NOSOTROS) */
+/* ------------------------------------- */
+
+.about-us-section {
+    padding: 80px 0; 
+    /* Gradiente hacia abajo: Blanco (#ffffff) se difumina a transparente */
+    background: linear-gradient(
+        to bottom,
+        #ffffff,              
+        #ffffff 80%,           
+        transparent 100%      
+    );
+    margin-bottom: 0; 
+    position: relative; 
+    z-index: 2; 
+}
+
+.about-us-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    /* Mantenemos el margen inferior para separar del contenido */
+    margin-bottom: 30px; 
+}
+
+
+.about-us-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px; 
+}
+
+/* Ajuste Responsivo para pegar el texto a la izquierda de la imagen en escritorio */
+@media (min-width: 992px) {
+    
+    /* 1. ACERCA EL CÍRCULO: Elimina el padding derecho para acercar la columna de la imagen al centro. */
+    .about-us-content .col-lg-6:nth-child(1) { /* Columna de la imagen */
+        padding-right: 0;
+    }
+    
+    /* 2. ACERCA EL TEXTO: AUMENTO EXTREMO del margen negativo a -180px para pegarlo al lado del círculo. */
+    .about-us-content .col-lg-6:nth-child(2) { /* Columna del texto */
+        margin-left: -180px; 
+        padding-left: 0 !important; 
+    }
+}
+
+/* ------------------------------------- */
+/* ESTILO: FOTO CIRCULAR SIMPLE (Historia) */
+/* ------------------------------------- */
 
 .main-circle-photo-container {
-    /* Contenedor que ayuda a centrar y define el tamaño de la escena */
-    width: 350px; /* Ancho deseado para el círculo grande */
-    height: 350px; /* Altura deseada para el círculo grande */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    /* Contenedor responsivo para mantener el círculo y evitar el recorte/scroll */
+    max-width: 250px; 
+    max-height: 250px; 
+    width: 70%; 
+    height: auto; 
+    padding-bottom: 70%; /* Mantiene proporción 1:1 */
+    position: relative; 
+    display: block;
     z-index: 10;
+    margin: 0 auto 30px auto; 
+}
+
+@media (min-width: 992px) {
+    .main-circle-photo-container {
+        width: 280px; 
+        height: 280px; 
+        padding-bottom: 0; 
+        margin: 0; 
+    }
 }
 
 .main-circle-photo {
-    /* El círculo en sí */
+    /* Estilos de círculo más básicos y seguros */
+    position: absolute; 
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
     background-color: var(--light);
-    
-    /* ---------------------------------------------------- */
-    /* EFECTO 3D Y RELIEVE */
-    /* ---------------------------------------------------- */
-    
-    /* 1. Sombra interna para el efecto de hundimiento (relieve) */
-    box-shadow: 
-        inset 0 0 10px rgba(0, 0, 0, 0.4), /* Sombra interior oscura sutil */
-        
-        /* 2. Borde exterior doble (simulando 3D) */
-        0 0 0 8px var(--primary), /* Borde primary principal */
-        0 0 0 15px rgba(255, 255, 255, 0.1), /* Borde de luz sutil (brillo 3D) */
-
-        /* 3. Sombra de profundidad para levantar el círculo */
-        5px 5px 15px rgba(0, 0, 0, 0.5); 
-        
-    /* Transformación sutil para dar la sensación de que está inclinado */
-    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transición suave */
+    transform: none; 
+    transition: none; 
 }
-
-/* Efecto al pasar el mouse (opcional, pero mejora el 3D) */
-.main-circle-photo:hover {
-    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-    box-shadow: 
-        inset 0 0 15px rgba(0, 0, 0, 0.6),
-        0 0 0 10px var(--primary), 
-        0 0 0 20px rgba(255, 255, 255, 0.2),
-        10px 10px 30px rgba(0, 0, 0, 0.7);
-}
-
 
 .main-circle-photo img {
-    /* Ajuste de la imagen dentro del círculo */
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que la imagen cubra todo el círculo */
-    border-radius: 50%; /* Esto no es estrictamente necesario ya que el contenedor tiene overflow, pero es buena práctica */
+    object-fit: cover; 
+    border-radius: 50%;
 }
 
+/* ------------------------------------- */
+/* SECCIÓN 2: CARRUSEL DE CLIENTES 3D */
+/* ------------------------------------- */
 
+.clients-section {
+    padding: 48px 0; 
+    background-color: transparent; /* Permite ver el fondo general del body */
+}
+
+.clients-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.client-trust-text {
+    font-style: italic;
+    color: #666;
+}
+
+/* Keyframes para la rotación 3D */
+@keyframes spin-sphere {
+    from {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+}
+
+.client-logo-sphere-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--sphere-size); 
+    perspective: 1000px; 
+}
+
+.client-logo-sphere {
+    width: var(--sphere-size);
+    height: var(--sphere-size);
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin-sphere var(--rotation-speed) linear infinite; /* Rotación continua */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-logo-circle {
+    position: absolute;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    /* Cálculo de la posición 3D para la esfera */
+    transform: 
+        rotateY(calc(var(--i) * (360deg / var(--total)))) 
+        translateZ(calc(var(--sphere-size) / 2))          
+        rotateY(calc(var(--i) * (-360deg / var(--total))));
+}
+
+.client-logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    opacity: 0.9; /* Logos en color original */
+    transition: all 0.3s;
+}
+
+.client-logo-circle img:hover {
+    opacity: 1; /* Opacidad total al pasar el mouse */
+}
+
+/* ------------------------------------- */
+/* SECCIÓN 3: MISIÓN Y VISIÓN */
+/* ------------------------------------- */
+
+.mission-vision-section {
+    padding: 50px 0; 
+    background-image: linear-gradient(
+        to top,
+        #ffffff,              /* Empieza blanco sólido (parte inferior de la sección) */
+        #ffffff 85%,          /* Mantiene el blanco sólido hasta el 85% del camino */
+        transparent 100%      /* Transiciona suavemente a transparente en el último 15% */
+    );
+    position: relative; 
+    z-index: 1; 
+}
+
+.mission-vision-section .p-lg-4 {
+    padding-top: 30px !important; 
+}
+
+.mv-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    margin-bottom: 20px; 
+}
+
+.mv-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 25px; 
+}
+
+.mv-photo {
+    max-height: 350px; 
+    width: 100%; 
+    object-fit: cover;
+}
+
+/* ------------------------------------- */
+/* SECCIÓN 4: CONTACTO */
+/* ------------------------------------- */
+
+.contact-section {
+    /* Fondo transparente para que se vea el fondo general */
+    background-color: transparent; 
+}
 /* ==================== SECCIÓN DE CONTACTO ==================== */
 .contact-section {
     /* Estilos de la sección de contacto */
@@ -829,33 +1033,6 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     transform: scale(1.1);
 }
 
-/* ==================== BOTÓN SCROLL-TO-TOP ==================== */
-.to-top {
-    /* Estilos y visibilidad del botón para subir */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--primary);
-    color: var(--dark);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-}
-
-.to-top.show {
-    opacity: 1;
-    visibility: visible;
-}
 
 /* ==================== ESTILOS DE CABECERAS DE PÁGINAS ==================== */
 
