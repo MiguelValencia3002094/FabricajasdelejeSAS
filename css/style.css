@@ -732,7 +732,7 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 .about-us-content p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #555;
+    color: var(--dark);
     margin-bottom: 15px; 
 }
 
