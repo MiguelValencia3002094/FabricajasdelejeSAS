@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabricajas del Eje S.A.S.</title>
+    <title>Nosotros - Fabricajas del Eje S.A.S.</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -11,15 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="img/Logo Fabricajas del Eje S.A.S.jpg" type="image/png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
     <header class="page-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
             <div class="container-fluid">
-                <span href="#" class="navbar-brand">
+                <a href="index.html" class="navbar-brand">
                     <img src="img/Logo Fabricajas del Eje S.A.S.jpg" alt="Logo de la empresa" class="logo img-fluid">
-                </span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -29,7 +29,7 @@
                             <a href="index.html" class="nav-link">INICIO</a>
                         </li>
                         <li class="nav-item">
-                            <a href="nosotros.html" class="nav-link">NOSOTROS</a>
+                            <a href="nosotros.html" class="nav-link active" aria-current="page">NOSOTROS</a>
                         </li>
                         <li class="nav-item">
                             <a href="productos.html" class="nav-link">PRODUCTOS</a>
@@ -47,39 +47,92 @@
         </nav>
     </header>
 
-
-<section class="nosotros-content py-5">
+<section class="about-us-section">
     <div class="container">
-        <div class="row align-items-center">
+        <h1 class="about-us-title text-center mb-5">Nuestra Trayectoria</h1>
+        <div class="row about-us-content align-items-center">
             
-            <div class="col-12 col-md-6 d-flex justify-content-center">
-                <div class="main-circle-photo-container mt-4 mb-4" style="margin-bottom: 30px;">
+            <div class="col-lg-6 mb-4 mb-lg-0 order-lg-1 d-flex justify-content-center">
+                <div class="main-circle-photo-container">
                     <div class="main-circle-photo">
-                        <img src="img/Trabajador.jpg" alt="Foto principal de la empresa" class="img-fluid">
+                        <img src="img/Trabajador.jpg" alt="Personal de Fabricajas del Eje S.A.S. y Clientes" class="img-fluid">
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 text-white text-center text-md-start">
-                <h2 class="display-6 fw-bold mb-4">Más de 27 Años Empacando Sueños</h2>
-                <p class="lead mb-3">
-                    En Fabricajas del Eje S.A.S., nuestra historia es la de la calidad y el compromiso. Desde 1998, hemos sido el aliado de confianza para cientos de empresas, grandes y pequeñas, en el Eje Cafetero.
+            <div class="col-lg-6 order-lg-2">
+                <p class="text-start">
+                    Fabricajas del Eje S.A.S lleva más de 27 años fabricando y ofreciendo cajas de cartón corrugado, combinando calidad, resistencia y opciones accesibles para cada necesidad.
                 </p>
-                <p class="mb-3">
-                    Nos especializamos en ofrecer soluciones de empaque a medida, desde cajas troqueladas de alta precisión hasta opciones de segunda mano que promueven la sostenibilidad.
+                <p class="text-start">
+                    Nuestro compromiso y experiencia nos han permitido construir alianzas sólidas con grandes empresas a nivel nacional, brindando soluciones confiables en embalaje, almacenamiento y transporte.
                 </p>
-                <p>
-                    Nuestra misión: Proveer empaques que no solo protejan tus productos, sino que también refuercen la imagen y la seguridad de tu marca.
+                <p class="text-start">
+                    Desde nuestros inicios, hemos priorizado la excelencia operativa y la satisfacción del cliente, consolidándonos como un aliado estratégico en la cadena de suministro en la región.
                 </p>
-                <a href="productos.html" class="btn btn-outline-light mt-3">Ver Nuestros Productos</a>
             </div>
-
         </div>
     </div>
 </section>
 
+<section class="clients-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 clients-title">Clientes que confían en nuestros empaques</h2>
 
-    <section class="contact-section py-5">
+        <div class="client-logo-sphere-container"> 
+            
+            <div class="client-logo-sphere">
+                
+                <div class="client-logo-circle" style="--i: 1; --total: 4;">
+                    <img src="img/SUZUKI.png" alt="Logo de Suzuki">
+                </div>
+                
+                <div class="client-logo-circle" style="--i: 2; --total: 4;">
+                    <img src="img/riduco.jpg" alt="Logo de Riduco">
+                </div>
+                
+                <div class="client-logo-circle" style="--i: 3; --total: 4;">
+                    <img src="img/asc.png" alt="Logo de ASC Electrónica">
+                </div>
+                
+                <div class="client-logo-circle" style="--i: 4; --total: 4;">
+                    <img src="img/FRYSBI.jpg" alt="Logo de Frisby">
+                </div>
+                
+            </div> 
+        </div> 
+        <p class="text-center mt-5 client-trust-text">Ellos confiaron en nosotros, ¡tú también puedes hacerlo!</p>
+    </div>
+</section>
+
+<section class="mission-vision-section">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-4 d-flex justify-content-center order-lg-1 mb-4 mb-lg-0">
+                <img src="img/Trabajador2.0.jpg" alt="Foto del personal de Fabricajas" class="img-fluid rounded shadow-sm mv-photo">
+            </div>
+
+            <div class="col-lg-8 order-lg-2">
+                <div class="p-lg-4">
+                    <h2 class="mv-title">Misión</h2>
+                    <p class="mv-text">
+                        En Fabricajas nos dedicamos a fabricar y ofrecer cajas de cartón corrugado que se adapten a las necesidades de nuestros clientes. Producimos empaques confiables y sostenibles que aseguran la protección, el transporte y el almacenamiento eficiente de mercancías. Nos comprometemos con prácticas responsables que minimicen el impacto ambiental, promoviendo el uso eficiente de recursos y materiales reciclados. Trabajamos de la mano con nuestros clientes para brindarles opciones personalizadas que combinen calidad, accesibilidad y respeto por el medio ambiente.
+                    </p>
+                </div>
+                <div class="p-lg-4 pt-lg-0">
+                    <h2 class="mv-title">Visión</h2>
+                    <p class="mv-text">
+                        Ser reconocidos en la región y en Colombia como la empresa líder en producción de cajas de cartón corrugado, destacándonos por nuestra responsabilidad ambiental, innovación y compromiso con la comunidad.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="contact-section py-5">
     <div class="container-fluid">
         <h2 class="text-center mb-5 contact-title">Contáctenos</h2>
         <div class="row g-0 contact-content">
