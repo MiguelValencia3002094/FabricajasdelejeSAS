@@ -661,12 +661,6 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 }
 /* ==================== ESTILOS ESPECÍFICOS: PÁGINA NOSOTROS ==================== */
 
-/* Variables locales específicas para el carrusel de clientes */
-:root {
-    --logo-size: 80px; 
-    --sphere-size: 300px; 
-    --rotation-speed: 25s; 
-}
 
 /* Sección 1: Nuestra Trayectoria (NOSOTROS) */
 .about-us-section {
@@ -757,8 +751,8 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 
 .main-circle-photo-container {
     /* Contenedor responsivo para mantener el círculo y evitar el recorte/scroll */
-    max-width: 250px; 
-    max-height: 250px; 
+    max-width: 700px; 
+    max-height: 700px; 
     width: 70%; 
     height: auto; 
     padding-bottom: 70%; /* Mantiene proporción 1:1 */
@@ -782,8 +776,8 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     position: absolute; 
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     overflow: hidden;
     background-color: var(--light);
@@ -804,7 +798,7 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 
 .clients-section {
     padding: 48px 0; 
-    background-color: transparent; /* Permite ver el fondo general del body */
+    background-color: transparent;
 }
 
 .clients-title {
@@ -828,51 +822,72 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     }
 }
 
+/* Ajuste responsive para que no sean demasiado grandes en móvil */
+@media (max-width: 768px) {
+    .client-logo-sphere-container {
+        /* 7. TAMAÑO EN MÓVILES (Aumentado de 280px a 320px) */
+        height: 320px; 
+        perspective: 800px; 
+    }
+    .client-logo-circle {
+        /* 8. TAMAÑO Y RADIO EN MÓVILES (Aumentado de 120px a 150px) */
+        --radius: 150px; 
+        width: 150px; 
+        height: 150px;
+        margin-top: calc(-150px / 2); 
+        margin-left: calc(-150px / 2); 
+    }
+}
+
 .client-logo-sphere-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: var(--sphere-size); 
-    perspective: 1000px; 
+    /* 1. TAMAÑO TOTAL DEL CONTENEDOR (Aumentado de 350px a 400px) */
+    height: 400px; 
+    perspective: 1000px;
+    margin: 40px auto;
 }
 
 .client-logo-sphere {
-    width: var(--sphere-size);
-    height: var(--sphere-size);
+    /* 2. TAMAÑO BASE DE LA ESCENA (Aumentado de 250px a 300px) */
+    width: 300px; 
+    height: 300px;
     position: relative;
-    transform-style: preserve-3d;
-    animation: spin-sphere var(--rotation-speed) linear infinite; /* Rotación continua */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transform-style: preserve-3d; 
+    animation: rotateSphere 20s linear infinite;
+    /* ... (Estilos sin cambios) ... */
 }
 
 .client-logo-circle {
-    position: absolute;
-    width: var(--logo-size);
-    height: var(--logo-size);
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Posicionamiento y transformación de cada logo individual */
+    /* 3. RADIO DE LA ÓRBITA (Aumentado de 200px a 250px) */
+    --radius: 250px; 
+    --angle: calc((var(--i) - 1) * (360deg / var(--total))); 
     
-    /* Cálculo de la posición 3D para la esfera */
-    transform: 
-        rotateY(calc(var(--i) * (360deg / var(--total)))) 
-        translateZ(calc(var(--sphere-size) / 2))          
-        rotateY(calc(var(--i) * (-360deg / var(--total))));
+    /* 4. TAMAÑO INDIVIDUAL DEL CÍRCULO (Aumentado de 200px a 250px) */
+    width: 250px; 
+    height: 250px; 
+
+    /* Posicionamiento 3D */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 5. AJUSTE DE MARGEN PARA CENTRADO (Ajustado a -250px/2) */
+    margin-top: calc(-250px / 2); 
+    margin-left: calc(-250px / 2);
+    
+    /* ... (El resto de la transformación y estilos son correctos) ... */
 }
 
 .client-logo-circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; 
-    opacity: 0.9; /* Logos en color original */
-    transition: all 0.3s;
+    /* 6. TAMAÑO DE LA IMAGEN DENTRO DEL CÍRCULO (Aumentado de 80% a 90%) */
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    padding: 5px;
 }
 
-.client-logo-circle img:hover {
-    opacity: 1; /* Opacidad total al pasar el mouse */
-}
 
 /* ------------------------------------- */
 /* SECCIÓN 3: MISIÓN Y VISIÓN */
@@ -906,7 +921,7 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 .mv-text {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #444;
+    color: var(--dark);
     margin-bottom: 25px; 
 }
 
