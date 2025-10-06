@@ -183,15 +183,14 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     width: 100%;
 }
 
-.navbar-nav .nav-link:visited,
-.navbar-nav .nav-link:active {
-    /* Restablece el color de los enlaces visitados/activos */
-    color: var(--color-navbar-text);
+.navbar-nav .nav-link.active {
+    /* Estilo para el enlace de la página actual */
+    color: var(--color-navbar-active); /* Usa el color que quieres para el seleccionado */
 }
 
-.navbar-nav .nav-link:visited::after,
-.navbar-nav .nav-link:active::after {
-    width: 0;
+.navbar-nav .nav-link.active::after {
+    /* Mantiene la línea bajo el enlace seleccionado */
+    width: 100%;
 }
 
 .btn-phone {
