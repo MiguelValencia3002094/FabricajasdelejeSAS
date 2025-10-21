@@ -1249,16 +1249,16 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     --radius: 150px; /* ⬅️ REDUCIDO: Distancia del centro de la esfera al logo */
     --angle: calc((var(--i) - 1) * (360deg / var(--total))); 
     
-    /* Mantenemos el tamaño grande del círculo (160px) */
-    width: 160px; 
-    height: 160px; 
+    /* Mantenemos el tamaño grande del círculo  */
+    width: 220px; 
+    height: 220px; 
 
     /* Posicionamiento 3D */
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: calc(-160px / 2); /* Centra verticalmente */
-    margin-left: calc(-160px / 2); /* Centra horizontalmente */
+    margin-top: calc(-220px / 2); /* Centra verticalmente */
+    margin-left: calc(-220px / 2); /* Centra horizontalmente */
     
     /* La transformación clave: Rota el logo a su posición y lo empuja hacia afuera */
     transform: 
