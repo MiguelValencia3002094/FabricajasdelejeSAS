@@ -733,15 +733,27 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 /* Ajuste Responsivo para pegar el texto a la izquierda de la imagen en escritorio */
 @media (min-width: 992px) {
     
-    /* 1. ACERCA EL CÍRCULO: Elimina el padding derecho para acercar la columna de la imagen al centro. */
+    /* 1. Ajustar el contenedor de la foto */
     .about-us-content .col-lg-6:nth-child(1) { /* Columna de la imagen */
-        padding-right: 0;
+        /* Eliminamos el padding derecho que acercaba la columna */
+        padding-right: 12px; /* Valor por defecto de Bootstrap */
     }
     
-    /* 2. ACERCA EL TEXTO: AUMENTO EXTREMO del margen negativo a -180px para pegarlo al lado del círculo. */
+    /* 2. Aplicar el desplazamiento al texto con TRANSLATE */
     .about-us-content .col-lg-6:nth-child(2) { /* Columna del texto */
-        margin-left: -180px; 
-        padding-left: 0 !important; 
+        /* Permitimos que la columna se mueva sin afectar el layout */
+        position: relative; 
+        
+        /* Eliminamos el margen negativo anterior: */
+        margin-left: 0; 
+        padding-left: 12px !important; /* Valor por defecto de Bootstrap */
+        
+        /* Desplazamos la columna 150px a la izquierda. 
+           Ajusta el valor (-150px) para controlar el solapamiento: */
+        transform: translateX(-150px);
+        
+        /* Aseguramos que el texto esté por encima de la imagen */
+        z-index: 5;
     }
 }
 
@@ -1113,9 +1125,9 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
 .imagen-producto-segunda {
     /* Imagen del producto de segunda */
     max-width: 100%; 
-    width: auto; 
+    width: auto;    
     height: auto;
-    max-height: 250px; 
+    max-height: 100%; 
     object-fit: contain;
     border: 1px solid var(--light);
     border-radius: 5px;
