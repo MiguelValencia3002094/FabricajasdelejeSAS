@@ -1302,10 +1302,10 @@ img, .logo, .logo-container, .center-logo, .card-img-top, iframe {
     }
     .client-logo-circle {
         --radius: 100px; /* ⬅️ REDUCIDO para móviles */
-        width: 100px; 
-        height: 100px;
-        margin-top: calc(-100px / 2); 
-        margin-left: calc(-100px / 2); 
+        width: 150px; 
+        height: 150px;
+        margin-top: calc(-150px / 2); 
+        margin-left: calc(-150px / 2); 
     }
 }
 
